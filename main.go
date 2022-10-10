@@ -12,10 +12,6 @@ func main (){
 	var wg sync.WaitGroup
 	wg.Add(1)
 
-
-
-
-
 go func (){
 	count("sheep")
 	count("fish")
