@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -8,16 +7,23 @@ import (
 
 func main (){
 	//make a channel of type string
-	c:= make(chan string)
+		c:= make(chan string)
 
-	go count("sheep",c)
-	//go count("fish", c)
+		go count("sheep",c)
+		//go count("fish", c)
 
-	//receive a message from the channel
-	msg := <- c
-	fmt.Println(msg)
+		//receive messages from the channel
+		for {
+			msg, open := <- c
+			
+			if !open {
+				break
+			}
+			fmt.Println(msg)
+		}
 
-}
+	}
+
 
 func count (thing string, c chan string){
 
@@ -28,5 +34,5 @@ func count (thing string, c chan string){
 		time.Sleep(time.Millisecond * 500)
 
 	}
-
+ 	close(c)
 }
