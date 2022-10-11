@@ -12,7 +12,7 @@ func main (){
 		go count("sheep",c)
 		//go count("fish", c)
 
-		//receive messages from the channel
+		//receive messagse from the channel
 		for {
 			msg, open := <- c
 			
